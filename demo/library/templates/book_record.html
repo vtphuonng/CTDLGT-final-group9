@@ -1,0 +1,46 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="card">
+  <div class="card-header"><strong>
+    	{{ book_record.title }} 
+  </div>
+  <div class="card-body">
+
+
+<p class="card-text">
+<strong>Book id </strong>{{ book_record.book_id }}</p>
+
+<p class="card-text">
+<strong>Author: </strong>{{ book_record.author }}
+</p>
+
+<p class="card-text">
+<strong>Borower Name: </strong>{{ book_record.borower_name }}</p>
+
+<p class="card-text">
+<strong>Identity Id: </strong>{{ book_record.identity_id }}</p>
+
+<p class="card-text">
+<strong>Borrow Day: </strong>{{ book_record.borrow_day }}</p>
+
+<p class="card-text">
+<strong>Return Day: </strong>{{ book_record.return_day }}</p>
+
+<p class="card-text">
+<strong>Days Late: </strong>{{ book_record.days_late }}</p>
+
+<p class="card-text">
+<strong>Fee Return Late: </strong>{{ book_record.fee_return_late }}</p>
+    
+    
+  </div>
+</div>
+
+<br/><br/>
+<a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
+
+<a href="{% url 'delete_book' book_record.book_id %}" class="btn btn-danger">Delete</a>
+
+<a href="{% url 'update' book_record.book_id %}" class="btn btn-secondary">Update Record</a>
+{% endblock %}

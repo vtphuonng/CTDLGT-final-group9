@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% if user.is_authenticated %}
+<h1>books list</h1>
+
+<table class="table table-success table-striped">
+  <thead class="table-dark">
+    <tr>
+        <th scope="col">id</th>   
+        <th scope="col">title</th>    
+        <th scope="col">author</th>
+        <th scope="col">borower</th>
+        <th scope="col">identity_id</th>   
+        <th scope="col">borrow_day</th>   
+        <th scope="col">return_day</th>   
+        <th scope="col">days_late</th>    
+        <th scope="col">fee_return_late</th>    
+    </tr>
+  </thead>
+  <tbody>
+      {% if records %}
+            {% for record in records %}
+            <tr>
+                <td><a href="{% url 'record' record.book_id %}">{{ record.book_id }}</a></td>
+                <td>{{ record.title }}</td> 
+                <td>{{ record.author }}</td>
+                <td>{{ record.borower_name }}</td>
+                <td>{{ record.identity_id }}</td>
+                <td>{{ record.borrow_day }}</td>
+                <td>{{ record.return_day }}</td>
+                <td>{{ record.days_late }}</td>
+                <td>{{ record.fee_return_late }}</td>
+            </tr>
+            {% endfor %}
+      {% endif %}
+      <br/>
+      <a href="{% url 'add_book' %}" class="btn btn-secondary">Add Book</a>
+  </tbody>
+</table>
+
+{% else %}
+
+<h1>login</h1>
+<br/>
+<form method="POST" action="{% url 'home' %}">
+    {% csrf_token %}
+    <form>
+        <div class="mb-3">
+          <input type="text" class="form-control" name="username", placeholder="User Name">
+        </div><br/>
+        <div class="mb-3">
+          <input type="password" class="form-control" name="password", placeholder="Password">
+        </div>
+        <br\>
+        <button type="submit" class="btn btn-primary">login</button>
+      </form>
+</form>
+</div>
+
+{% endif %}
+{% endblock %}
