@@ -1,37 +1,38 @@
 {% extends 'base.html' %}
 {% block content %}
 
+{% for b in book_record %}
 <div class="card">
   <div class="card-header"><strong>
-    	{{ book_record.title }} 
+    	{{ b.title }} 
   </div>
   <div class="card-body">
 
 
 <p class="card-text">
-<strong>Book id </strong>{{ book_record.book_id }}</p>
+<strong>Book id </strong>{{ b.book_id }}</p>
 
 <p class="card-text">
-<strong>Author: </strong>{{ book_record.author }}
+<strong>Author: </strong>{{ b.author }}
 </p>
 
 <p class="card-text">
-<strong>Borower Name: </strong>{{ book_record.borower_name }}</p>
+<strong>Borower Name: </strong>{{ b.borower_name }}</p>
 
 <p class="card-text">
-<strong>Identity Id: </strong>{{ book_record.identity_id }}</p>
+<strong>Identity Id: </strong>{{ b.identity_id }}</p>
 
 <p class="card-text">
-<strong>Borrow Day: </strong>{{ book_record.borrow_day }}</p>
+<strong>Borrow Day: </strong>{{ b.borrow_day }}</p>
 
 <p class="card-text">
-<strong>Return Day: </strong>{{ book_record.return_day }}</p>
+<strong>Return Day: </strong>{{ b.return_day }}</p>
 
 <p class="card-text">
-<strong>Days Late: </strong>{{ book_record.days_late }}</p>
+<strong>Days Late: </strong>{{ b.days_late }}</p>
 
 <p class="card-text">
-<strong>Fee Return Late: </strong>{{ book_record.fee_return_late }}</p>
+<strong>Fee Return Late: </strong>{{ b.fee_return_late }}</p>
     
     
   </div>
@@ -40,7 +41,8 @@
 <br/><br/>
 <a href="{% url 'home' %}" class="btn btn-secondary">Back</a>
 
-<a href="{% url 'delete_book' book_record.book_id %}" class="btn btn-danger">Delete</a>
+<a href="{% url 'delete_book' b.book_id %}" class="btn btn-danger">Delete</a>
 
-<a href="{% url 'update' book_record.book_id %}" class="btn btn-secondary">Update Record</a>
+<a href="{% url 'update' b.book_id %}" class="btn btn-secondary">Update Record</a>
+{% endfor %}
 {% endblock %}

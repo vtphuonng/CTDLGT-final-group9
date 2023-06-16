@@ -10,6 +10,17 @@
             <li class="nav-item">
               <a class="nav-link" href="{% url 'logout' %}">logout</a>
             </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Filter
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="dropdown-item" href="{% url 'filter_borrowed_books' %}">Borrowed Books</a></li>
+                <li><a class="dropdown-item" href="{% url 'filter_unborrowed_books' %}">Unborrowed Books</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="{% url 'filter_lost_books' %}">Lost Books</a></li>
+              </ul>
+            </li>
           {% else %}
             <li class="nav-item">
               <a class="nav-link" href="{% url 'signup' %}">sign up</a>
@@ -18,21 +29,11 @@
               <a class="nav-link" href="{% url 'home' %}">login</a>
             </li>
           {% endif %}
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-              Dropdown
-            </a>
-        </li>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
           </li>
         </ul>
-        <form class="d-flex" role="search">
-          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <form class="d-flex" method=POST action = "{% url 'search_by_name_records' %}"  role="search">
+          {% csrf_token %}
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name="searched">
           <button class="btn btn-outline-success" type="submit">Search</button>
         </form>
       </div>

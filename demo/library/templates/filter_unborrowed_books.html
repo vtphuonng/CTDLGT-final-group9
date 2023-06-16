@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<h1>Books List</h1>
+<h1>Borrowed Books</h1>
 
 <table class="table table-success table-striped">
   <thead class="table-dark">
@@ -20,8 +20,8 @@
     </tr>
   </thead>
   <tbody>
-      {% if records %}
-            {% for record in records %}
+      {% if filter_unborrowed_books %}
+            {% for record in filter_unborrowed_books %}
             <tr>
                 <td><a href="{% url 'record' record.book_id %}">{{ record.book_id }}</a></td>
                 <td>{{ record.title }}</td> 

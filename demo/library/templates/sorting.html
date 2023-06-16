@@ -20,8 +20,8 @@
     </tr>
   </thead>
   <tbody>
-      {% if records %}
-            {% for record in records %}
+      {% if sorting %}
+            {% for record in sorting %}
             <tr>
                 <td><a href="{% url 'record' record.book_id %}">{{ record.book_id }}</a></td>
                 <td>{{ record.title }}</td> 

@@ -3,7 +3,7 @@
 {% block content %}
 
 {% if user.is_authenticated %}
-<h1>Books List</h1>
+<h1>search list</h1>
 
 <table class="table table-success table-striped">
   <thead class="table-dark">
@@ -20,8 +20,8 @@
     </tr>
   </thead>
   <tbody>
-      {% if records %}
-            {% for record in records %}
+      {% if search_by_name_records %}
+            {% for record in search_by_name_records %}
             <tr>
                 <td><a href="{% url 'record' record.book_id %}">{{ record.book_id }}</a></td>
                 <td>{{ record.title }}</td> 
@@ -37,15 +37,6 @@
       {% endif %}
       <br/>
       <a href="{% url 'add_book' %}" class="btn btn-secondary">Add Book</a>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-          Sorting By ID
-        </a>
-        <ul class="dropdown-menu">
-          <li><a class="dropdown-item" href="{% url 'sorting' %}">Ascending </a></li>
-          <li><a class="dropdown-item" href="{% url 'dessorting' %}">Descending</a></li>
-        </ul>
-      </li>
   </tbody>
 </table>
 
